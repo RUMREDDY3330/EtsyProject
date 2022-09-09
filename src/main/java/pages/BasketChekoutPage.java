@@ -23,7 +23,8 @@ public class BasketChekoutPage extends TestBase{
 		//driver.findElement(Basketclick).click();	
 	}
 	public void verifyuserIsOnBasketPage() {
-		String ActualContactText = driver.findElement(contactShopTextXpath).getText();
+		
+		String ActualContactText = getText(contactShopTextXpath);
 	    Assert.assertEquals(ActualContactText, "Contact shop");
 	}
 	public void verifyProductAddedToCart() {

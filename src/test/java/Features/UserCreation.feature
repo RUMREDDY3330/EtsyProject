@@ -24,4 +24,6 @@ Feature: New user creation functionality
     Then click on basket icon
     Then verify user is on basket checkout page
     Then verify product is added to cart
-    Then fetch all the product information in to excel like product name price reviews seller information
+    Then fetch all the product information in to excel like product name price reviews seller information\
+    Then click on account button 
+    Then clisk on signout button

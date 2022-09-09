@@ -23,27 +23,31 @@ public class SearchProductPage extends TestBase {
 	//private By reviewsText = By.xpath("//div[@id='listing-right-column']/div/div[1]/div[4]/div/div/div/div[1]/div[1]/div[1]/div[1]/div/h2");
 	private By reviewsText = By.xpath("//h2[contains(text(),'reviews')]");
 	private By gProductPriceText = By.xpath("//*[@id='listing-page-cart']/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/p");
+	private By closeIconBtnXpath =By.xpath("(//span[@class='wt-icon'])[16]");
+	
+	
 	public void SearchProduct() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-		driver.findElement(SearchClkXpath).click();
+		implicitylyWait(3);
+		onclick(SearchClkXpath);
+		//writeText(SelectProduct, "shirt for men");
 		driver.findElement(SearchInput).sendKeys("shirt for men");
 		
 	}
 	
 	public void SearchButoonClick() {
-		driver.findElement(SearchBtn).click();
+		onclick(SearchBtn);
 		
 	}
 	
 	public void SelectProduct() {
 		try {
-			driver.findElement(SelectProduct).click();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+			onclick(SelectProduct);
+			implicitylyWait(2);
 			SwitchWindow();
 		} catch(Exception e){
 			driver.navigate().refresh();
-			driver.findElement(SelectProduct).click();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+			onclick(SelectProduct);
+			implicitylyWait(2);
 			SwitchWindow();
 		}
 		
@@ -72,7 +76,7 @@ public class SearchProductPage extends TestBase {
 		a.moveToElement(AddToCart).click();
 		a.build().perform();
 		Thread.sleep(4000);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		implicitylyWait(3);
 	}
 	
 	public void verifyProductIsAdded() {
@@ -85,12 +89,9 @@ public class SearchProductPage extends TestBase {
 	  
 	   
 	}
-	public void onClickCloseIcon() {
-		  driver.findElement(By.xpath("(//span[@class='wt-icon'])[16]")).click();
+	public void onClickCloseIcon() throws InterruptedException {
+		waitForElementToBeDisplayed(closeIconBtnXpath);
+		onclick(closeIconBtnXpath);
 	}
-	
-
-
-
 	
 }

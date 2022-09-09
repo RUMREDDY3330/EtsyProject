@@ -26,7 +26,8 @@ public class NewUserCreationPage extends TestBase {
 	
 	
 	public void SignBtn() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		implicitylyWait(2);
+		waitForElementToBeDisplayed(SingInBtnXpath);
 		WebElement element = driver.findElement(SingInBtnXpath);
 		Actions a = new Actions(driver);
 		a.moveToElement(element).click().perform();
@@ -34,8 +35,8 @@ public class NewUserCreationPage extends TestBase {
 	}
 	
 	public void RegisterBtn() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		driver.findElement(RegisterBtnXpath).click();
+		implicitylyWait(2);
+		onclick(RegisterBtnXpath);
 	}
 	
 	public void EmailId () throws InterruptedException {
@@ -51,17 +52,17 @@ public class NewUserCreationPage extends TestBase {
 	}
 	public void Password() {
 		password = "9581131156";
-		driver.findElement(pwdXpath).sendKeys(password);;
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		writeText(pwdXpath, password);
+		implicitylyWait(2);
 	}
 	public void ClickRegisterBtn() {
-		driver.findElement(ClickRegisterBtnXpath).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		onclick(ClickRegisterBtnXpath);
+		
 	}
 	
 	public void HomePage() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		String name = driver.findElement(HomepageXpath).getText();
+		implicitylyWait(3);
+		String name = getText(HomepageXpath);
 		Assert.assertEquals("Welcome to Etsy, mahesh!", name);
 		
 	}

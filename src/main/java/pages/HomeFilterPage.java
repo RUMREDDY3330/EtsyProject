@@ -14,22 +14,19 @@ public class HomeFilterPage extends TestBase{
 	private By verifyselectingDisplayXpath =By.xpath("(//*[contains(text(),'Bestseller')])[1]");
 	
 	public void filterbutton() {
-		driver.findElement(filterBtnXpath).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		
+		onclick(filterBtnXpath);
+		implicitylyWait(3);
 	}
 	
 	public void selectcheckboxinfilter() {
-		driver.findElement(selectchectBoxFilterXpath).click();
-		
+		onclick(selectchectBoxFilterXpath);
 	}
-	
 	public void clickonapplybutton() {
-		driver.findElement(applybtnXpath).click();
+		onclick(applybtnXpath);
 	}
-	
 	public void verifyselectingfilterdisplay() {
-		String actualselectingfilter = driver.findElement(verifyselectingDisplayXpath).getText();
+		implicitylyWait(2);
+		String actualselectingfilter = getText(verifyselectingDisplayXpath);
 	    Assert.assertEquals("Bestseller", actualselectingfilter);
 	}
 }

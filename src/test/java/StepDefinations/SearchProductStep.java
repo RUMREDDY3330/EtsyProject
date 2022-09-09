@@ -44,7 +44,7 @@ public class SearchProductStep extends ObjectManager{
 		
 	}
 	@Then("click on close button")
-	public void click_on_close_button() {
+	public void click_on_close_button() throws InterruptedException {
 		ProductSearch.onClickCloseIcon();
 	}
 

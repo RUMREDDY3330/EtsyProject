@@ -73,4 +73,18 @@ public class TestBase {
 		js.executeScript("arguments[0].click();",ele);
 		
 	}
+	public void writeText( By ele,String text) {
+		driver.findElement(ele).sendKeys(text);
+	}
+	public void implicitylyWait(int timeInSeconds) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeInSeconds));
+	}
+	public String getText(By ErrorMsg) {
+		return driver.findElement(ErrorMsg).getText();
+	}
+	
+	public void onclick(By filterBtnXpath ) {
+		driver.findElement(filterBtnXpath).click();
+		
+	}
 }

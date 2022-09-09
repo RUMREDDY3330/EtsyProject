@@ -5,11 +5,11 @@ import utils.TestBase;
 
 public class Hooks extends TestBase{
 	
-//	@After
-//	public void closeBrowser() throws InterruptedException {
-//		Thread.sleep(3000);
-//		driver.close();
-//		
-//	}
+	@After
+	public void closeBrowser() throws InterruptedException {
+		Thread.sleep(3000);
+		driver.quit();
+		
+	}
 
 }

@@ -41,8 +41,10 @@ public class LoginPage extends TestBase{
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		
 		waitForElementToBeDisplayed(UsernamesXpath);
-		driver.findElement(UsernamesXpath).sendKeys(username);
-		driver.findElement(userPasswordXpath).sendKeys(password);
+		writeText(UsernamesXpath, username);
+		writeText(userPasswordXpath, password);
+//		driver.findElement(UsernamesXpath).sendKeys(username);
+//		driver.findElement(userPasswordXpath).sendKeys(password);
 		
 	}
 	
@@ -52,7 +54,7 @@ public class LoginPage extends TestBase{
 	}
 	public void verifyuseronhomepage() {
 		waitForElementToBeDisplayed(HomePageXpath);
-		String expectename = driver.findElement(HomePageXpath).getText();
+		String expectename = getText(HomePageXpath);
 		System.out.println("expectename"+expectename);
 		boolean flag = false;
 		if(expectename.contains("R Umamaheswara Reddy")) {
@@ -65,19 +67,23 @@ public class LoginPage extends TestBase{
 	}
 	
 	public void verifyErrorpwd() throws InterruptedException {
-		Thread.sleep(2000);
-		String errorPwd = driver.findElement(ErrorMsg).getText();
+
+		waitForElementToBeDisplayed(ErrorMsg);
+		String errorPwd = getText(ErrorMsg);
 		System.out.println("ErrorMessage" + errorPwd);
 		   Assert.assertEquals("Password was incorrect", errorPwd);
-		   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		   
 	}
 	
 	public void EnterUsernameandpasswordFromExcelSheet() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		implicitylyWait(2);
+		waitForElementToBeDisplayed(UsernamesXpath);
 		String username = ExcelReadData.readExcelData(1, 0);
 		String password = ExcelReadData.readExcelData(1, 1);
-		driver.findElement(UsernamesXpath).sendKeys(username);
-		driver.findElement(userPasswordXpath).sendKeys(password);
+		writeText(UsernamesXpath, username);
+		writeText(userPasswordXpath,password);
+//		driver.findElement(UsernamesXpath).sendKeys(username);
+//		driver.findElement(userPasswordXpath).sendKeys(password);
 		
 	}
 
